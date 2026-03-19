@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | StaffSync</title>
+
+    <!-- Bootstrap 5 CSS (Local) -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Bootstrap Icons (Local) -->
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Prevents favicon error -->
+    <link rel="icon" href="data:,">
+</head>
+<body>
+
+    <!-- HEADER with NAVBAR will go here -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Brand/Logo -->
+            <a class="navbar-brand" href="Dashboard.html">
+                <i class="bi bi-people-fill"></i> StaffSync
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#crmNavbar"
+                    aria-controls="crmNavbar" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="crmNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">
+                            <i class="bi bi-person"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Employees.html">
+                            <i class="bi bi-people"></i> Employees
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Assessment.html">
+                            <i class="bi bi-journal-check"></i> Assessment
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Profile.html">
+                            <i class="bi bi-person-circle"></i> Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <!-- MAIN CONTENT will go here -->
+    <main class="container my-4">
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Dashboard.html">
+                    <i class="bi bi-house-door"></i> Dashboard
+                </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Employees</li>
+        </ol>
+    </nav>
+
+    <!-- Page Heading Row -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <h1 class="page-title">
+            <i class="bi bi-people"></i> Employee Management
+        </h1>
+        <button class="btn btn-primary" 
+                data-bs-toggle="modal" 
+                data-bs-target="#addEmployeeModal">
+            <i class="bi bi-person-plus-fill"></i> Add Employee
+        </button>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text bg-white">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <input type="text" 
+                       id="searchEmployee" 
+                       class="form-control" 
+                       placeholder="Search employees by name, department, or role..."
+                       onkeyup="filterEmployees()">
+            </div>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+            <span class="text-muted">
+                Total: <strong id="employeeCount">6</strong> employees
+            </span>
+        </div>
+    </div>
+
+        <!-- ============================================
+         SECTION 1: Filter Buttons
+         ============================================ -->
+    <section id="filterSection" class="mb-4">
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-dark btn-sm filter-btn active" 
+                    onclick="filterByCategory('all')" data-filter="all">
+                <i class="bi bi-grid-fill"></i> All
+            </button>
+            <button class="btn btn-outline-success btn-sm filter-btn" 
+                    onclick="filterByCategory('active')" data-filter="active">
+                <i class="bi bi-check-circle"></i> Active
+            </button>
+            <button class="btn btn-outline-secondary btn-sm filter-btn" 
+                    onclick="filterByCategory('inactive')" data-filter="inactive">
+                <i class="bi bi-x-circle"></i> Inactive
+            </button>
+            <button class="btn btn-outline-primary btn-sm filter-btn" 
+                    onclick="filterByCategory('Sales')" data-filter="Sales">
+                Sales
+            </button>
+            <button class="btn btn-outline-info btn-sm filter-btn" 
+                    onclick="filterByCategory('Marketing')" data-filter="Marketing">
+                Marketing
+            </button>
+            <button class="btn btn-outline-warning btn-sm filter-btn" 
+                    onclick="filterByCategory('Support')" data-filter="Support">
+                Support
+            </button>
+            <button class="btn btn-outline-danger btn-sm filter-btn" 
+                    onclick="filterByCategory('HR')" data-filter="HR">
+                HR
+            </button>
+        </div>
+    </section>
+
+        <!--SECTION 2: Employee Table -->
+    <section id="employeeTable" class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0" id="empTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Clients Assigned</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeeTableBody">
+    <!-- Row 1 -->
+    <tr data-department="Sales" data-status="active">
+        <td>101</td>
+        <td>
+            <i class="bi bi-person-circle text-primary"></i>
+            <strong>Rahul Sharma</strong>
+            <br>
+            <small class="text-muted">rahul@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-primary-light text-primary">Sales</span></td>
+        <td>Manager</td>
+        <td><span class="badge bg-info rounded-pill">5 clients</span></td>
+        <td>
+            <span class="badge bg-success">
+                <i class="bi bi-check-circle"></i> Active
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(101)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+    <!-- Row 2 -->
+    <tr data-department="Marketing" data-status="active">
+        <td>102</td>
+        <td>
+            <i class="bi bi-person-circle text-success"></i>
+            <strong>Ananya Gupta</strong>
+            <br>
+            <small class="text-muted">ananya@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-success-light text-success">Marketing</span></td>
+        <td>Executive</td>
+        <td><span class="badge bg-info rounded-pill">3 clients</span></td>
+        <td>
+            <span class="badge bg-success">
+                <i class="bi bi-check-circle"></i> Active
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(102)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+    <!-- Row 3 -->
+    <tr data-department="Support" data-status="active">
+        <td>103</td>
+        <td>
+            <i class="bi bi-person-circle text-warning"></i>
+            <strong>Vikram Patel</strong>
+            <br>
+            <small class="text-muted">vikram@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-warning-light text-warning">Support</span></td>
+        <td>Team Lead</td>
+        <td><span class="badge bg-info rounded-pill">4 clients</span></td>
+        <td>
+            <span class="badge bg-success">
+                <i class="bi bi-check-circle"></i> Active
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(103)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+    <!-- Row 4 -->
+    <tr data-department="HR" data-status="inactive">
+        <td>104</td>
+        <td>
+            <i class="bi bi-person-circle text-secondary"></i>
+            <strong>Priya Singh</strong>
+            <br>
+            <small class="text-muted">priya@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-info-light text-info">HR</span></td>
+        <td>HR Specialist</td>
+        <td><span class="badge bg-info rounded-pill">2 clients</span></td>
+        <td>
+            <span class="badge bg-secondary">
+                <i class="bi bi-x-circle"></i> Inactive
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary " 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(104)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+    <!-- Row 5 -->
+    <tr data-department="Sales" data-status="active">
+        <td>105</td>
+        <td>
+            <i class="bi bi-person-circle text-primary"></i>
+            <strong>Deepak Kumar</strong>
+            <br>
+            <small class="text-muted">deepak@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-primary-light text-primary">Sales</span></td>
+        <td>Sales Executive</td>
+        <td><span class="badge bg-info rounded-pill">6 clients</span></td>
+        <td>
+            <span class="badge bg-success">
+                <i class="bi bi-check-circle"></i> Active
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary " 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(105)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+    <!-- Row 6 -->
+    <tr data-department="Marketing" data-status="inactive">
+        <td>106</td>
+        <td>
+            <i class="bi bi-person-circle text-secondary"></i>
+            <strong>Sneha Mehta</strong>
+            <br>
+            <small class="text-muted">sneha@staffsync.com</small>
+        </td>
+        <td><span class="badge bg-success-light text-success">Marketing</span></td>
+        <td>Content Lead</td>
+        <td><span class="badge bg-info rounded-pill">2 clients</span></td>
+        <td>
+            <span class="badge bg-secondary">
+                <i class="bi bi-x-circle"></i> Inactive
+            </span>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-outline-primary " 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#viewEmployeeModal"
+                    onclick="viewEmployee(106)"
+                    title="View Details">
+                <i class="bi bi-eye"></i>
+            </button>
+        </td>
+    </tr>
+
+</tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+</main>
+<!--MODAL 1: View Employee Details-->
+<div class="modal fade" id="viewEmployeeModal" tabindex="-1" 
+     aria-labelledby="viewEmployeeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="viewEmployeeLabel">
+                    <i class="bi bi-person-circle"></i> Employee Details
+                </h5>
+                <button type="button" class="btn-close btn-close-white" 
+                        data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body" id="employeeDetailsBody">
+
+                <!-- Employee Icon and Name -->
+                <div class="text-center mb-3">
+                    <i class="bi bi-person-circle text-primary" 
+                       style="font-size: 4rem;"></i>
+                    <h4 id="modalName">Employee Name</h4>
+                    <span class="badge bg-success" id="modalStatus">Active</span>
+                </div>
+
+                <hr>
+
+                <!-- Basic Info -->
+                <p>
+                    <i class="bi bi-building text-muted"></i>
+                    <strong>Department:</strong>
+                    <span id="modalDepartment">--</span>
+                </p>
+
+                <p>
+                    <i class="bi bi-person-badge text-muted"></i>
+                    <strong>Role:</strong>
+                    <span id="modalRole">--</span>
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope text-muted"></i>
+                    <strong>Email:</strong>
+                    <span id="modalEmail">--</span>
+                </p>
+
+                <hr>
+
+                <!-- Assigned Clients -->
+                <h6><i class="bi bi-briefcase"></i> Assigned Clients:</h6>
+                <ol id="modalClients" class="ps-3">
+                    <li>Loading...</li>
+                </ol>
+
+                <hr>
+
+                <!-- Performance -->
+                <h6><i class="bi bi-graph-up"></i> Performance:</h6>
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Score</span>
+                    <span id="modalScore">--%</span>
+                </div>
+                <div class="progress" style="height: 12px;">
+                    <div class="progress-bar bg-success" 
+                         id="modalProgressBar"
+                         role="progressbar" 
+                         style="width: 0%"
+                         aria-valuenow="0" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                    </div>
+                </div>
+
+                <!-- Note for now -->
+                <div class="alert alert-info mt-3 mb-0">
+                    <small>
+                        <i class="bi bi-info-circle"></i>
+                        Employee details will load dynamically.
+                    </small>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <a href="Profile.html" class="btn btn-primary btn-sm">
+                    <i class="bi bi-box-arrow-up-right"></i> Full Profile
+                </a>
+                <button type="button" class="btn btn-secondary btn-sm" 
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================
+     MODAL 2: Add New Employee
+     ============================================ -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" 
+     aria-labelledby="addEmployeeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="addEmployeeLabel">
+                    <i class="bi bi-person-plus-fill"></i> Add New Employee
+                </h5>
+                <button type="button" class="btn-close btn-close-white" 
+                        data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <!-- Modal Body with Form -->
+            <div class="modal-body">
+                <form id="addEmployeeForm">
+
+                    <!-- Employee Name -->
+                    <div class="mb-3">
+                        <label for="empName" class="form-label">
+                            <i class="bi bi-person"></i> Full Name
+                        </label>
+                        <input type="text" class="form-control" id="empName" 
+                               placeholder="Enter full name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="empEmail" class="form-label">
+                            <i class="bi bi-envelope"></i> Email
+                        </label>
+                        <input type="email" class="form-control" id="empEmail" 
+                               placeholder="Enter email address" required>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-3">
+                        <label for="empDepartment" class="form-label">
+                            <i class="bi bi-building"></i> Department
+                        </label>
+                        <select class="form-select" id="empDepartment" 
+                                onchange="handleDepartmentChange()" required>
+                            <option value="" selected disabled>Select department</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Support">Support</option>
+                            <option value="HR">HR</option>
+                        </select>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="mb-3">
+                        <label for="empRole" class="form-label">
+                            <i class="bi bi-person-badge"></i> Role
+                        </label>
+                        <input type="text" class="form-control" id="empRole" 
+                               placeholder="Enter role (e.g., Manager, Executive)">
+                    </div>
+
+                    <!-- Clients Field -->
+                    <div class="mb-3">
+                        <label for="empClients" class="form-label">
+                            <i class="bi bi-briefcase"></i> Clients (comma separated)
+                        </label>
+                        <input type="text" class="form-control" id="empClients" 
+                               placeholder="e.g., TCS, Wipro, Infosys">
+                        <small class="text-muted">
+                            Leave empty if no clients assigned yet.
+                        </small>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="bi bi-toggle-on"></i> Status
+                        </label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" 
+                                   name="empStatus" id="statusActive" 
+                                   value="active" checked>
+                            <label class="form-check-label" for="statusActive">
+                                Active
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" 
+                                   name="empStatus" id="statusInactive" 
+                                   value="inactive">
+                            <label class="form-check-label" for="statusInactive">
+                                Inactive
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" 
+                        data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-success btn-sm" 
+                        onclick="addEmployee()">
+                    <i class="bi bi-check-lg"></i> Add Employee
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+    <!-- FOOTER will go here -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+        <p class="mb-1">
+            <i class="bi bi-people-fill"></i> StaffSync
+        </p>
+        <p class="mb-0">
+            <small>&copy; 2025 StaffSync. All rights reserved.</small>
+        </p>
+    </div>
+</footer>
+
+    <!-- Temporary CDN — to test if HTML is correct -->
+<script src="vendor/jquery/jquery-3.7.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/employees.js"></script>
+</body>
+</html>

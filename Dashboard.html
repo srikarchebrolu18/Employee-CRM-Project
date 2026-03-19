@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | StaffSync</title>
+
+    <!-- Bootstrap 5 CSS (Local) -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (Local) -->
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Prevents favicon error -->
+    <link rel="icon" href="data:,">
+</head>
+<body>
+
+    <!-- HEADER with NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Brand/Logo -->
+            <a class="navbar-brand" href="Dashboard.html">
+                <i class="bi bi-people-fill"></i> StaffSync
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#crmNavbar"
+                    aria-controls="crmNavbar" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Nav Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="crmNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Dashboard.html">
+                            <i class="bi bi-person"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Employees.html">
+                            <i class="bi bi-people"></i> Employees
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Assessment.html">
+                            <i class="bi bi-journal-check"></i> Assessment
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Profile.html">
+                            <i class="bi bi-person-circle"></i> Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- MAIN CONTENT will go here -->
+    <main class="container my-4">
+
+    <!-- Breadcrumb Navigation -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">
+            <i class="bi bi-house-door"></i> Dashboard
+        </li>
+    </ol>
+</nav>
+
+<!-- Welcome Banner -->
+<div class="welcome-banner mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h1 class="welcome-title">
+                <i class="bi bi-hand-wave"></i> Welcome back, Srikar!
+            </h1>
+            <p class="welcome-text">
+                Here's what's happening with your team today.
+            </p>
+        </div>
+        <div class="col-md-4 text-end">
+            <i class="bi bi-speedometer2 welcome-icon"></i>
+        </div>
+    </div>
+</div>
+
+    <!--Employee Statistics Cards-->
+<section id="statistics" class="mb-5">
+    <h4 class="section-title mb-3">
+        <i class="bi bi-bar-chart-line"></i> Employee Statistics
+    </h4>
+
+    <div class="row g-4">
+
+        <!--Total Employees -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-center border-0 shadow-sm stat-card card-total">
+                <div class="card-body">
+                    <div class="stat-icon-circle bg-primary-light mb-3">
+                        <i class="bi bi-people-fill text-primary fs-3"></i>
+                    </div>
+                    <h2 class="card-title fw-bold" id="totalEmployees">12</h2>
+                    <p class="card-text text-muted">Total Employees</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Active Employees -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-center border-0 shadow-sm stat-card card-active">
+                <div class="card-body">
+                    <div class="stat-icon-circle bg-success-light mb-3">
+                        <i class="bi bi-person-check-fill text-success fs-3"></i>
+                    </div>
+                    <h2 class="card-title fw-bold" id="activeEmployees">9</h2>
+                    <p class="card-text text-muted">Active Employees</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Clients Assigned -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-center border-0 shadow-sm stat-card card-clients">
+                <div class="card-body">
+                    <div class="stat-icon-circle bg-warning-light mb-3">
+                        <i class="bi bi-briefcase-fill text-warning fs-3"></i>
+                    </div>
+                    <h2 class="card-title fw-bold" id="totalClients">28</h2>
+                    <p class="card-text text-muted">Clients Assigned</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Average Performance -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card text-center border-0 shadow-sm stat-card card-performance">
+                <div class="card-body">
+                    <div class="stat-icon-circle bg-info-light mb-3">
+                        <i class="bi bi-graph-up-arrow text-info fs-3"></i>
+                    </div>
+                    <h2 class="card-title fw-bold" id="avgPerformance">76%</h2>
+                    <p class="card-text text-muted">Avg Performance</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <section id="clientAssignments" class="mb-5">
+        <h4 class="section-title mb-3">
+            <i class="bi bi-briefcase"></i> Client Assignments
+        </h4>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">SI.No</th>
+                                <th scope="col">Employee</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Clients</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    Rahul Sharma
+                                </td>
+                                <td>Sales</td>
+                                <td>
+                                    <ol class="mb-0 ps-3">
+                                        <li>Tata Motors</li>
+                                        <li>Reliance</li>
+                                        <li>Infosys</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">Active</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>
+                                    Ananya Gupta
+                                </td>
+                                <td>Marketing</td>
+                                <td>
+                                    <ol class="mb-0 ps-3">
+                                        <li>Wipro</li>
+                                        <li>HCL Tech</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">Active</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>
+                                    Vikram Patel
+                                </td>
+                                <td>Support</td>
+                                <td>
+                                    <ol class="mb-0 ps-3">
+                                        <li>Bajaj Auto</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <span class="badge bg-warning text-dark">On Leave</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>
+                                    Priya Singh
+                                </td>
+                                <td>HR</td>
+                                <td>
+                                    <ol class="mb-0 ps-3">
+                                        <li>Internal</li>
+                                    </ol>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">Inactive</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- ============================================
+         SECTION 3: Performance Progress
+         ============================================ -->
+    <section id="performanceProgress" class="mb-5">
+        <h4 class="section-title mb-3">
+            <i class="bi bi-trophy"></i> Performance Progress
+        </h4>
+
+        <div class="row g-4">
+
+            <!-- Left Column: Employee Progress Bars -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white fw-bold">
+                        <i class="bi bi-graph-up"></i> Individual Performance
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Employee 1 -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Rahul Sharma</span>
+                                <span class="text-muted">85%</span>
+                            </div>
+                            <div class="progress" style="height: 12px;">
+                                <div class="progress-bar bg-success" 
+                                     role="progressbar" 
+                                     style="width: 85%"
+                                     aria-valuenow="85" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employee 2 -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Ananya Gupta</span>
+                                <span class="text-muted">72%</span>
+                            </div>
+                            <div class="progress" style="height: 12px;">
+                                <div class="progress-bar bg-info" 
+                                     role="progressbar" 
+                                     style="width: 72%"
+                                     aria-valuenow="72" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employee 3 -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Vikram Patel</span>
+                                <span class="text-muted">60%</span>
+                            </div>
+                            <div class="progress" style="height: 12px;">
+                                <div class="progress-bar bg-warning" 
+                                     role="progressbar" 
+                                     style="width: 60%"
+                                     aria-valuenow="60" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employee 4 -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Priya Singh</span>
+                                <span class="text-muted">45%</span>
+                            </div>
+                            <div class="progress" style="height: 12px;">
+                                <div class="progress-bar bg-danger" 
+                                     role="progressbar" 
+                                     style="width: 45%"
+                                     aria-valuenow="45" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employee 5 -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Deepak Kumar</span>
+                                <span class="text-muted">90%</span>
+                            </div>
+                            <div class="progress" style="height: 12px;">
+                                <div class="progress-bar bg-success" 
+                                     role="progressbar" 
+                                     style="width: 90%"
+                                     aria-valuenow="90" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Department Summary -->
+            <div class="col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white fw-bold">
+                        <i class="bi bi-building"></i> Department Overview
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Department 1 -->
+                        <div class="d-flex justify-content-between align-items-center mb-3 
+                                    p-2 department-item">
+                            <div>
+                                <i class="bi bi-cash-stack text-primary"></i>
+                                <strong>Sales</strong>
+                            </div>
+                            <div>
+                                <span class="badge bg-primary">4 members</span>
+                            </div>
+                        </div>
+
+                        <!-- Department 2 -->
+                        <div class="d-flex justify-content-between align-items-center mb-3 
+                                    p-2 department-item">
+                            <div>
+                                <i class="bi bi-megaphone text-success"></i>
+                                <strong>Marketing</strong>
+                            </div>
+                            <div>
+                                <span class="badge bg-success">3 members</span>
+                            </div>
+                        </div>
+
+                        <!-- Department 3 -->
+                        <div class="d-flex justify-content-between align-items-center mb-3 
+                                    p-2 department-item">
+                            <div>
+                                <i class="bi bi-headset text-warning"></i>
+                                <strong>Support</strong>
+                            </div>
+                            <div>
+                                <span class="badge bg-warning text-dark">3 members</span>
+                            </div>
+                        </div>
+
+                        <!-- Department 4 -->
+                        <div class="d-flex justify-content-between align-items-center mb-3 
+                                    p-2 rounded department-item">
+                            <div>
+                                <i class="bi bi-person-badge text-info"></i>
+                                <strong>HR</strong>
+                            </div>
+                            <div>
+                                <span class="badge bg-info rounded-pill">2 members</span>
+                            </div>
+                        </div>
+
+                        <!-- Overall Progress using HTML progress element -->
+                        <hr>
+                        <p class="fw-bold mb-1">Overall Company Performance</p>
+                        <progress id="overallProgress" value="76" max="100" 
+                                  class="w-100">
+                            76%
+                        </progress>
+                        <small class="text-muted">76 out of 100</small>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+        
+    <section id="recentActivities" class="mb-5">
+        <h4 class="section-title mb-3">
+            <i class="bi bi-clock-history"></i> Recent Activities
+        </h4>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between 
+                               align-items-center py-3">
+                        <div>
+                            <i class="bi bi-person-plus-fill text-success"></i>
+                            <strong>Rahul Sharma</strong> was assigned a new client 
+                            <span class="text-primary">Tata Motors</span>
+                        </div>
+                        <small class="text-muted">2 hours ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between 
+                               align-items-center py-3">
+                        <div>
+                            <i class="bi bi-journal-check text-info"></i>
+                            <strong>Ananya Gupta</strong> completed the 
+                            <span class="text-primary">CRM Skills Assessment</span>
+                        </div>
+                        <small class="text-muted">5 hours ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between 
+                               align-items-center py-3">
+                        <div>
+                            <i class="bi bi-trophy-fill text-warning"></i>
+                            <strong>Deepak Kumar</strong> achieved 
+                            <span class="text-success">90% performance score</span>
+                        </div>
+                        <small class="text-muted">1 day ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between 
+                               align-items-center py-3">
+                        <div>
+                            <i class="bi bi-person-dash-fill text-danger"></i>
+                            <strong>Priya Singh</strong> was marked as 
+                            <span class="text-secondary">Inactive</span>
+                        </div>
+                        <small class="text-muted">2 days ago</small>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between 
+                               align-items-center py-3">
+                        <div>
+                            <i class="bi bi-arrow-up-circle-fill text-primary"></i>
+                            <strong>Vikram Patel</strong> performance improved to 
+                            <span class="text-success">60%</span>
+                        </div>
+                        <small class="text-muted">3 days ago</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+    <!-- FOOTER will go here -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+        <p class="mb-1">
+            <i class="bi bi-people-fill"></i> StaffSync
+        </p>
+        <p class="mb-0">
+            <small>&copy; 2025 StaffSync. All rights reserved.</small>
+        </p>
+    </div>
+</footer>
+     <!-- jQuery (CDN) -->
+    <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Test</title>
+</head>
+<body>
+    <h1>Testing vendor files:</h1>
+
+    <h3>1. Testing Bootstrap CSS:</h3>
+    <p id="cssTest">Checking...</p>
+
+    <h3>2. Testing Bootstrap JS:</h3>
+    <p id="jsTest">Checking...</p>
+
+    <h3>3. Testing jQuery:</h3>
+    <p id="jqTest">Checking...</p>
+
+    <h3>4. Testing Bootstrap Icons:</h3>
+    <p id="iconTest">Checking...</p>
+
+    <!-- Try loading all files -->
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+
+    <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Test 1: Check if Bootstrap CSS loaded
+        var testDiv = document.createElement('div');
+        testDiv.className = 'container';
+        document.body.appendChild(testDiv);
+        var styles = window.getComputedStyle(testDiv);
+        if (styles.width !== '' && styles.maxWidth !== 'none') {
+            document.getElementById('cssTest').innerHTML = '✅ Bootstrap CSS is working!';
+        } else {
+            document.getElementById('cssTest').innerHTML = '❌ Bootstrap CSS NOT loaded!';
+        }
+
+        // Test 2: Check if Bootstrap JS loaded
+        if (typeof bootstrap !== 'undefined') {
+            document.getElementById('jsTest').innerHTML = '✅ Bootstrap JS is working!';
+        } else {
+            document.getElementById('jsTest').innerHTML = '❌ Bootstrap JS NOT loaded!';
+        }
+
+        // Test 3: Check if jQuery loaded
+        if (typeof jQuery !== 'undefined') {
+            document.getElementById('jqTest').innerHTML = '✅ jQuery is working! Version: ' + jQuery.fn.jquery;
+        } else {
+            document.getElementById('jqTest').innerHTML = '❌ jQuery NOT loaded!';
+        }
+
+        // Test 4: Check Bootstrap Icons
+        document.getElementById('iconTest').innerHTML = 
+            'Icon test: <i class="bi bi-check-circle-fill" style="font-size:2rem; color:green;"></i>' +
+            ' (If you see a green checkmark, icons work!)';
+    </script>
+</body>
+</html>
