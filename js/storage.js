@@ -1,6 +1,4 @@
-// ============================================
 // STORAGE.JS — localStorage Helper Functions
-// ============================================
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));

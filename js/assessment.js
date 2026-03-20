@@ -1,22 +1,3 @@
-// ============================================
-// ASSESSMENT.JS — Quiz Logic
-// ============================================
-// Contains:
-//   1. Correct answers
-//   2. Calculate score
-//   3. Get grade (using if-else)
-//   4. Get feedback (using switch)
-//   5. Display results
-//   6. Save to localStorage
-//   7. Retake quiz
-// ============================================
-
-
-// ============================================
-// SECTION 1: Correct Answers Object
-// ============================================
-// Each key is the question name (q1, q2, etc.)
-// Each value is the correct answer letter
 
 const correctAnswers = {
     q1: "B",
@@ -30,11 +11,6 @@ const correctAnswers = {
 const totalQuestions = 5;
 
 
-// ============================================
-// FUNCTION: Calculate Score
-// ============================================
-// Called when user clicks "Submit Assessment"
-// onclick="calculateScore()"
 
 function calculateScore() {
 
@@ -47,49 +23,29 @@ function calculateScore() {
         let questionName = "q" + i;
 
         // Find the selected radio button for this question
-        // selector: input[name="q1"]:checked
-        // → finds an <input> with name="q1" that is currently selected
         let selected = document.querySelector('input[name="' + questionName + '"]:checked');
 
         // Check if user answered this question
         if (selected === null) {
             alert("Please answer all questions before submitting!");
-            return;  // Stop — don't calculate
+            return; 
         }
 
-        // Compare selected answer with correct answer
         if (selected.value === correctAnswers[questionName]) {
             score++;
         }
     }
 
-    // Calculate percentage
     let percentage = (score / totalQuestions) * 100;
 
-    // Get grade using if-else (PDF requirement)
     let grade = getGrade(percentage);
 
-    // Get feedback using switch (PDF requirement)
     let feedback = getFeedback(grade);
 
-    // Show results on page
     displayResults(score, percentage, grade, feedback);
 
-    // Save results to localStorage
     saveResults(score, percentage, grade);
 }
-
-
-// ============================================
-// FUNCTION: Get Grade (using if-else)
-// ============================================
-// PDF requires if-else for grade calculation
-//
-// Parameters:
-//   percentage — the score percentage (0 to 100)
-//
-// Returns:
-//   A letter grade (A, B, C, D, or F)
 
 function getGrade(percentage) {
 
@@ -106,17 +62,6 @@ function getGrade(percentage) {
     }
 }
 
-
-// ============================================
-// FUNCTION: Get Feedback (using switch)
-// ============================================
-// PDF requires switch for performance feedback
-//
-// Parameters:
-//   grade — the letter grade (A, B, C, D, or F)
-//
-// Returns:
-//   A feedback message string
 
 function getFeedback(grade) {
 
@@ -137,29 +82,24 @@ function getFeedback(grade) {
 }
 
 
-// ============================================
-// FUNCTION: Display Results on Page
-// ============================================
-// Makes the result section visible and fills it with data
-
 function displayResults(score, percentage, grade, feedback) {
 
-    // Step 1: Show the result section (was hidden with display:none)
+    // Show the result section
     document.getElementById("resultSection").style.display = "block";
 
-    // Step 2: Update text content
+    // Update text content
     document.getElementById("scoreDisplay").textContent = score + "/" + totalQuestions;
     document.getElementById("percentageDisplay").textContent = percentage + "%";
     document.getElementById("gradeDisplay").textContent = grade;
     document.getElementById("feedbackDisplay").textContent = feedback;
 
-    // Step 3: Update progress bar
+    // Update progress bar
     let progressBar = document.getElementById("scoreProgressBar");
     progressBar.style.width = percentage + "%";
     progressBar.textContent = percentage + "%";
     progressBar.setAttribute("aria-valuenow", percentage);
 
-    // Step 4: Change progress bar color based on score
+    // Change progress bar color based on score
     if (percentage >= 80) {
         progressBar.className = "progress-bar bg-success";
     } else if (percentage >= 60) {
@@ -168,7 +108,7 @@ function displayResults(score, percentage, grade, feedback) {
         progressBar.className = "progress-bar bg-danger";
     }
 
-    // Step 5: Change alert color based on score
+    // Change alert color based on score
     let resultAlert = document.getElementById("resultAlert");
     if (percentage >= 80) {
         resultAlert.className = "alert alert-success";
@@ -178,17 +118,10 @@ function displayResults(score, percentage, grade, feedback) {
         resultAlert.className = "alert alert-danger";
     }
 
-    // Step 6: Smooth scroll to results
-    document.getElementById("resultSection").scrollIntoView({ 
-        behavior: "smooth" 
-    });
 }
 
 
-// ============================================
-// FUNCTION: Save Results to localStorage
-// ============================================
-// Saves quiz results so Profile page can read them
+//Save Results to localStorage
 
 function saveResults(score, percentage, grade) {
 
@@ -215,11 +148,7 @@ function saveResults(score, percentage, grade) {
     saveToStorage("employees", allEmployees);
 }
 
-
-// ============================================
-// FUNCTION: Retake Quiz
-// ============================================
-// Called when user clicks "Retake Assessment"
+//Retake Quiz
 
 function retakeQuiz() {
 
@@ -234,30 +163,15 @@ function retakeQuiz() {
 }
 
 
-// ============================================
-// FUNCTION: Check if Passed (for Jest testing)
-// ============================================
-// PDF requires this function for Jest test cases
-// A simple function that returns true if score >= 50%
 
 function isPassed(percentage) {
     return percentage >= 50;
 }
 
-
-// ============================================
-// FUNCTION: Calculate Percentage (for Jest testing)
-// ============================================
-// PDF requires this for Jest test cases
-
 function calculatePercentage(score, total) {
     return (score / total) * 100;
 }
 
-
-// ============================================
-// PAGE INITIALIZATION
-// ============================================
 
 if (typeof window !== "undefined") {
 

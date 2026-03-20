@@ -5,26 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | StaffSync</title>
 
-    <!-- Bootstrap 5 CSS (Local) -->
+    <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 
-    <!-- Bootstrap Icons (Local) -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Prevents favicon error -->
-    <link rel="icon" href="data:,">
 </head>
 <body>
 
-    <!-- ==================== HEADER WITH NAVBAR ==================== -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
 
-                <!-- Brand/Logo -->
                 <a class="navbar-brand" href="Dashboard.html">
                     <i class="bi bi-people-fill"></i> StaffSync
                 </a>
@@ -69,7 +64,6 @@
         </nav>
     </header>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
     <main class="container my-4">
 
         <!-- Breadcrumb Navigation -->
@@ -84,12 +78,10 @@
             </ol>
         </nav>
 
-        <!-- Page Heading -->
         <h1 class="page-title mb-4">
             <i class="bi bi-person-circle"></i> Employee Profile
         </h1>
 
-        <!-- Profile Card,  Assessment Results -->
         <div class="row g-4 mb-4">
 
             <!-- Left: Profile Info Card -->
@@ -179,13 +171,6 @@
                             <span id="profileFeedback">Good Performance</span>
                         </p>
 
-                        <!-- Date -->
-                        <p>
-                            <i class="bi bi-calendar-check text-muted"></i>
-                            <strong>Date:</strong>
-                            <span id="profileAssessmentDate">--</span>
-                        </p>
-
                         <hr>
 
                         <!-- Score Progress Bar -->
@@ -201,13 +186,6 @@
                                 80%
                             </div>
                         </div>
-
-                        <!-- Info message -->
-                        <small class="text-muted mt-2 d-block">
-                            <i class="bi bi-info-circle"></i>
-                            Data will load from localStorage after assessment.
-                        </small>
-
                     </div>
                 </div>
             </div>
@@ -331,7 +309,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <div class="container">
             <p class="mb-1">
@@ -343,14 +320,10 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    <!-- jQuery (Local) -->
     <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
 
-    <!-- Bootstrap 5 JS Bundle (Local) -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JS -->
     <script src="js/storage.js"></script>
     <script src="js/app.js"></script>
 

@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | StaffSync</title>
+    <title>Employee | StaffSync</title>
 
-    <!-- Bootstrap 5 CSS (Local) -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Bootstrap Icons (Local) -->
+
     <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Prevents favicon error -->
-    <link rel="icon" href="data:,">
 </head>
 <body>
 
-    <!-- HEADER with NAVBAR will go here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <!-- Brand/Logo -->
             <a class="navbar-brand" href="Dashboard.html">
                 <i class="bi bi-people-fill"></i> StaffSync
             </a>
@@ -69,7 +63,6 @@
     <!-- MAIN CONTENT will go here -->
     <main class="container my-4">
 
-    <!-- Breadcrumb Navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -81,7 +74,6 @@
         </ol>
     </nav>
 
-    <!-- Page Heading Row -->
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
         <h1 class="page-title">
             <i class="bi bi-people"></i> Employee Management
@@ -114,9 +106,7 @@
         </div>
     </div>
 
-        <!-- ============================================
-         SECTION 1: Filter Buttons
-         ============================================ -->
+        <!-- Filter Buttons -->
     <section id="filterSection" class="mb-4">
         <div class="d-flex flex-wrap gap-2">
             <button class="btn btn-outline-dark btn-sm filter-btn active" 
@@ -150,7 +140,7 @@
         </div>
     </section>
 
-        <!--SECTION 2: Employee Table -->
+        <!-- Employee Table -->
     <section id="employeeTable" class="mb-5">
         <div class="card shadow-sm">
             <div class="card-body p-0">
@@ -346,7 +336,7 @@
     
 
 </main>
-<!--MODAL 1: View Employee Details-->
+<!-- View Employee Details-->
 <div class="modal fade" id="viewEmployeeModal" tabindex="-1" 
      aria-labelledby="viewEmployeeLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -421,14 +411,7 @@
                     </div>
                 </div>
 
-                <!-- Note for now -->
-                <div class="alert alert-info mt-3 mb-0">
-                    <small>
-                        <i class="bi bi-info-circle"></i>
-                        Employee details will load dynamically.
-                    </small>
-                </div>
-
+                
             </div>
 
             <!-- Modal Footer -->
@@ -447,9 +430,7 @@
 </div>
 
 
-<!-- ============================================
-     MODAL 2: Add New Employee
-     ============================================ -->
+<!-- Add New Employee -->
 <div class="modal fade" id="addEmployeeModal" tabindex="-1" 
      aria-labelledby="addEmployeeLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -465,11 +446,9 @@
                 </button>
             </div>
 
-            <!-- Modal Body with Form -->
             <div class="modal-body">
                 <form id="addEmployeeForm">
 
-                    <!-- Employee Name -->
                     <div class="mb-3">
                         <label for="empName" class="form-label">
                             <i class="bi bi-person"></i> Full Name
@@ -478,7 +457,6 @@
                                placeholder="Enter full name" required>
                     </div>
 
-                    <!-- Email -->
                     <div class="mb-3">
                         <label for="empEmail" class="form-label">
                             <i class="bi bi-envelope"></i> Email
@@ -487,7 +465,6 @@
                                placeholder="Enter email address" required>
                     </div>
 
-                    <!-- Department -->
                     <div class="mb-3">
                         <label for="empDepartment" class="form-label">
                             <i class="bi bi-building"></i> Department
@@ -502,7 +479,6 @@
                         </select>
                     </div>
 
-                    <!-- Role -->
                     <div class="mb-3">
                         <label for="empRole" class="form-label">
                             <i class="bi bi-person-badge"></i> Role
@@ -511,7 +487,6 @@
                                placeholder="Enter role (e.g., Manager, Executive)">
                     </div>
 
-                    <!-- Clients Field -->
                     <div class="mb-3">
                         <label for="empClients" class="form-label">
                             <i class="bi bi-briefcase"></i> Clients (comma separated)
@@ -523,7 +498,6 @@
                         </small>
                     </div>
 
-                    <!-- Status -->
                     <div class="mb-3">
                         <label class="form-label">
                             <i class="bi bi-toggle-on"></i> Status
@@ -549,7 +523,6 @@
                 </form>
             </div>
 
-            <!-- Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" 
                         data-bs-dismiss="modal">
@@ -566,7 +539,6 @@
 </div>
 
 
-    <!-- FOOTER will go here -->
 <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
         <p class="mb-1">
@@ -578,7 +550,6 @@
     </div>
 </footer>
 
-    <!-- Temporary CDN — to test if HTML is correct -->
 <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/storage.js"></script>

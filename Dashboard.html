@@ -5,25 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | StaffSync</title>
 
-    <!-- Bootstrap 5 CSS (Local) -->
+    <!-- Bootstrap 5 CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 
-    <!-- Bootstrap Icons (Local) -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Prevents favicon error -->
-    <link rel="icon" href="data:,">
 </head>
 <body>
 
-    <!-- HEADER with NAVBAR -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <!-- Brand/Logo -->
             <a class="navbar-brand" href="Dashboard.html">
                 <i class="bi bi-people-fill"></i> StaffSync
             </a>
@@ -108,7 +103,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card text-center border-0 shadow-sm stat-card card-total">
                 <div class="card-body">
-                    <div class="stat-icon-circle bg-primary-light mb-3">
+                    <div class="stat-icon-circle bg-primary-light mb-3 mx-auto">
                         <i class="bi bi-people-fill text-primary fs-3"></i>
                     </div>
                     <h2 class="card-title fw-bold" id="totalEmployees">12</h2>
@@ -121,7 +116,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card text-center border-0 shadow-sm stat-card card-active">
                 <div class="card-body">
-                    <div class="stat-icon-circle bg-success-light mb-3">
+                    <div class="stat-icon-circle bg-success-light mb-3 mx-auto">
                         <i class="bi bi-person-check-fill text-success fs-3"></i>
                     </div>
                     <h2 class="card-title fw-bold" id="activeEmployees">9</h2>
@@ -134,7 +129,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card text-center border-0 shadow-sm stat-card card-clients">
                 <div class="card-body">
-                    <div class="stat-icon-circle bg-warning-light mb-3">
+                    <div class="stat-icon-circle bg-warning-light mb-3 mx-auto">
                         <i class="bi bi-briefcase-fill text-warning fs-3"></i>
                     </div>
                     <h2 class="card-title fw-bold" id="totalClients">28</h2>
@@ -147,7 +142,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card text-center border-0 shadow-sm stat-card card-performance">
                 <div class="card-body">
-                    <div class="stat-icon-circle bg-info-light mb-3">
+                    <div class="stat-icon-circle bg-info-light mb-3 mx-auto">
                         <i class="bi bi-graph-up-arrow text-info fs-3"></i>
                     </div>
                     <h2 class="card-title fw-bold" id="avgPerformance">76%</h2>
@@ -249,9 +244,7 @@
     </section>
 
 
-        <!-- ============================================
-         SECTION 3: Performance Progress
-         ============================================ -->
+        <!-- Performance Progress -->
     <section id="performanceProgress" class="mb-5">
         <h4 class="section-title mb-3">
             <i class="bi bi-trophy"></i> Performance Progress
@@ -259,7 +252,7 @@
 
         <div class="row g-4">
 
-            <!-- Left Column: Employee Progress Bars -->
+            <!-- Employee Progress Bars -->
             <div class="col-lg-7">
                 <div class="card shadow-sm">
                     <div class="card-header bg-white fw-bold">
@@ -305,7 +298,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>Vikram Patel</span>
-                                <span class="text-muted">60%</span>
+                                <span class="text-muted">70%</span>
                             </div>
                             <div class="progress" style="height: 12px;">
                                 <div class="progress-bar bg-warning" 
@@ -322,7 +315,7 @@
                         <div class="mb-3">
                             <div class="d-flex justify-content-between mb-1">
                                 <span>Priya Singh</span>
-                                <span class="text-muted">45%</span>
+                                <span class="text-muted">65%</span>
                             </div>
                             <div class="progress" style="height: 12px;">
                                 <div class="progress-bar bg-danger" 
@@ -356,7 +349,7 @@
                 </div>
             </div>
 
-            <!-- Right Column: Department Summary -->
+            <!-- Department Summary -->
             <div class="col-lg-5">
                 <div class="card shadow-sm">
                     <div class="card-header bg-white fw-bold">
@@ -489,7 +482,7 @@
 
 </main>
 
-    <!-- FOOTER will go here -->
+    <!-- footer -->
 <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
         <p class="mb-1">
@@ -500,10 +493,10 @@
         </p>
     </div>
 </footer>
-     <!-- jQuery (CDN) -->
+     <!-- jQuery -->
     <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+
     <script src="js/storage.js"></script>
     <script src="js/app.js"></script>
 

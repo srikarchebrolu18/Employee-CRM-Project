@@ -389,7 +389,7 @@ function loadEmployeeTable() {
         tableBody.appendChild(row);
     });
 
-    // Step 6: Update employee count
+    // Update employee count
     document.getElementById("employeeCount").textContent = allEmployees.length;
 }
 
@@ -399,10 +399,8 @@ $(document).ready(function() {
     // Load employee table from localStorage
     loadEmployeeTable();
 
-    // jQuery .on() event for search
     $("#searchEmployee").on("keyup", function() {
         filterEmployees();
     });
 
-    console.log("✅ employees.js loaded successfully!");
 });
